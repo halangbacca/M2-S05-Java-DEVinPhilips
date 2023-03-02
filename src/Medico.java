@@ -5,6 +5,19 @@ public class Medico extends Pessoa {
     private Boolean statusNoSistema = true;
     private Integer totalDeAtendimentosRealizados = 0;
 
+    // Getters
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public String getInstituicaoDeEnsinoDaFormacao() {
+        return instituicaoDeEnsinoDaFormacao;
+    }
+
+    public String getCrm() {
+        return crm;
+    }
+
     // Setters
     public void setInstituicaoDeEnsinoDaFormacao(String instituicaoDeEnsinoDaFormacao) {
         this.instituicaoDeEnsinoDaFormacao = instituicaoDeEnsinoDaFormacao;
@@ -14,23 +27,16 @@ public class Medico extends Pessoa {
         this.crm = crm;
     }
 
-    public void setEspecialidade(Integer especialidade) {
-        if (especialidade == 1) {
-            this.especialidade = "Clínico geral";
-        } else if (especialidade == 2) {
-            this.especialidade = "Anestesiologia";
-        } else if (especialidade == 3) {
-            this.especialidade = "Dermatologia";
-        } else if (especialidade == 4) {
-            this.especialidade = "Ginecologia";
-        } else if (especialidade == 5) {
-            this.especialidade = "Neurologia";
-        } else if (especialidade == 6) {
-            this.especialidade = "Pediatria";
-        } else if (especialidade == 8) {
-            this.especialidade = "Psiquiatria";
-        } else if (especialidade == 9) {
-            this.especialidade = "Ortopedia";
+    public void setEspecialidade(String especialidade) {
+        switch (especialidade) {
+            case "1" -> this.especialidade = "Clínico geral";
+            case "2" -> this.especialidade = "Anestesiologia";
+            case "3" -> this.especialidade = "Dermatologia";
+            case "4" -> this.especialidade = "Ginecologia";
+            case "5" -> this.especialidade = "Neurologia";
+            case "6" -> this.especialidade = "Pediatria";
+            case "7" -> this.especialidade = "Psiquiatria";
+            case "8" -> this.especialidade = "Ortopedia";
         }
     }
 
@@ -42,16 +48,14 @@ public class Medico extends Pessoa {
         this.totalDeAtendimentosRealizados += 1;
     }
 
-    // Getter
-    public String getEspecialidade() {
-        return especialidade;
-    }
-
     // toString
     @Override
     public String toString() {
         return "Médico {" +
                 "Nome completo = '" + getNomeCompleto() + '\'' +
+                ", Gênero = '" + getGenero() + '\'' +
+                ", CPF = '" + getCpf() + '\'' +
+                ", Data de nascimento = '" + getDataDeNascimento() + '\'' +
                 ", Especialidade = '" + especialidade + '\'' +
                 ", CRM/UF = '" + crm + '\'' +
                 ", Instituição acadêmica = '" + instituicaoDeEnsinoDaFormacao + '\'' +

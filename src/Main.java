@@ -1,3 +1,8 @@
+// Correção da IndexOutOfBoundsException na tela de atendimento médico e na tela de alterar status do paciente
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -5,20 +10,23 @@ public class Main {
     public static void telaInicial() {
         int opcao = 0;
 
-        System.out.println("Bem vindo ao LABMedicine!\n\n" +
-                "Selecione uma das opções abaixo:\n\n" +
-                "1. Cadastro de Paciente\n" +
-                "2. Cadastro de Enfermeiro\n" +
-                "3. Cadastro de Médico\n" +
-                "4. Realização de Atendimento Médico\n" +
-                "5. Atualização do Status de Atendimento do Paciente\n" +
-                "6. Relatórios\n" +
-                "7. Sair\n");
+        System.out.println(
+                "=========================\n" +
+                        "Bem vindo ao LABMedicine!\n" +
+                        "=========================\n" +
+                        "\nSelecione uma das opções abaixo:\n\n" +
+                        "1. Cadastro de Paciente\n" +
+                        "2. Cadastro de Enfermeiro\n" +
+                        "3. Cadastro de Médico\n" +
+                        "4. Realização de Atendimento Médico\n" +
+                        "5. Atualização do Status de Atendimento do Paciente\n" +
+                        "6. Relatórios\n" +
+                        "7. Sair\n");
 
         do {
             try {
                 Scanner scanner = new Scanner(System.in);
-                System.out.print("Número selecionado: ");
+                System.out.print("Opção selecionada: ");
                 opcao = scanner.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Opção incorreta, tente novamente!\n");
@@ -27,162 +35,23 @@ public class Main {
 
         switch (opcao) {
             case 1:
-                System.out.println("\n====================\nCADASTRO DE PACIENTE\n====================");
-
-                Paciente paciente = new Paciente();
-
-                Scanner scannerPaciente = new Scanner(System.in);
-                System.out.print("\nInsira o nome do paciente: ");
-                paciente.setNomeCompleto(scannerPaciente.nextLine());
-
-                System.out.print("Insira o gênero do paciente: ");
-                paciente.setGenero(scannerPaciente.nextLine());
-
-                System.out.print("Insira a data de nascimento do paciente: ");
-                paciente.setDataDeNascimento(scannerPaciente.nextLine());
-
-                System.out.print("Insira o CPF do paciente: ");
-                paciente.setCpf(scannerPaciente.nextLine());
-
-                System.out.print("Insira o telefone do paciente: ");
-                paciente.setTelefone(scannerPaciente.nextLine());
-
-                System.out.print("Insira o contato de emergência do paciente: ");
-                paciente.setContatoDeEmergencia(scannerPaciente.nextLine());
-
-                System.out.print("Insira o convênio do paciente: ");
-                paciente.setConvenio(scannerPaciente.nextLine());
-
-                System.out.print("Insira o número do convênio do paciente: ");
-                paciente.setNumeroDoConvenio(scannerPaciente.nextLine());
-
-                System.out.print("Insira a validade do convênio do paciente: ");
-                paciente.setValidadeDoConvenio(scannerPaciente.nextLine());
-
-                System.out.print("Insira alergias do paciente: ");
-                paciente.setListaDeAlergias(scannerPaciente.nextLine());
-
-                System.out.print("Insira cuidados específicos do paciente: ");
-                paciente.setListaDeCuidadosEspecificos(scannerPaciente.nextLine());
-
-                Paciente.adicionarPaciente(paciente);
-
-                System.out.println();
-
-                telaInicial();
-
+                cadastroDePaciente();
                 break;
 
             case 2:
-                System.out.println("\n======================\nCADASTRO DE ENFERMEIRO\n======================");
-
-                Enfermeiro enfermeiro = new Enfermeiro();
-
-                Scanner scannerEnfermeiro = new Scanner(System.in);
-                System.out.print("\nInsira o nome do enfermeiro: ");
-                enfermeiro.setNomeCompleto(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira o gênero do enfermeiro: ");
-                enfermeiro.setGenero(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira a data de nascimento do enfermeiro: ");
-                enfermeiro.setDataDeNascimento(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira o CPF do enfermeiro: ");
-                enfermeiro.setCpf(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira o telefone do enfermeiro: ");
-                enfermeiro.setTelefone(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira a instituição de formação do enfermeiro: ");
-                enfermeiro.setInstituicaoDeEnsinoDaFormacao(scannerEnfermeiro.nextLine());
-
-                System.out.print("Insira o COREN/UF do enfermeiro: ");
-                enfermeiro.setCoren(scannerEnfermeiro.nextLine());
-
-                Enfermeiro.adicionarEnfermeiro(enfermeiro);
-                telaInicial();
+                cadastroDeEnfermeiro();
                 break;
 
             case 3:
-                System.out.println("\n==================\nCADASTRO DE MÉDICO\n==================");
-
-                Medico medico = new Medico();
-
-                Scanner scannerMedico = new Scanner(System.in);
-                System.out.print("\nInsira o nome do médico: ");
-                medico.setNomeCompleto(scannerMedico.nextLine());
-
-                System.out.print("Insira o gênero do médico: ");
-                medico.setGenero(scannerMedico.nextLine());
-
-                System.out.print("Insira a data de nascimento do médico: ");
-                medico.setDataDeNascimento(scannerMedico.nextLine());
-
-                System.out.print("Insira o CPF do médico: ");
-                medico.setCpf(scannerMedico.nextLine());
-
-                System.out.print("Insira o telefone do médico: ");
-                medico.setTelefone(scannerMedico.nextLine());
-
-                System.out.print("Insira a instituição de formação do médico: ");
-                medico.setInstituicaoDeEnsinoDaFormacao(scannerMedico.nextLine());
-
-                System.out.print("Insira o CRM/UF do médico: ");
-                medico.setCrm(scannerMedico.nextLine());
-
-                System.out.print("\nInsira a especialidade do médico: ");
-                System.out.println("\n1.Clínico Geral\n2.Anestesista\n3.Dermatologia\n4.Ginecologia\n5.Neurologia\n6.Pediatria\n7.Psiquiatria\n8.Ortopedia");
-                System.out.print("\nEspecialidade: ");
-                medico.setEspecialidade(scannerMedico.nextInt());
-
-                medico.setStatusNoSistema(true);
-
-                Medico.adicionarMedico(medico);
-                telaInicial();
+                cadastroDeMedico();
                 break;
 
             case 4:
-                System.out.println("\n================================\nREALIZAÇÃO DE ATENDIMENTO MÉDICO\n================================");
-
-                System.out.println("\nSelecione um dos médicos pelo seu identificador: ");
-                Medico.getListaDeMedicos();
-
-                System.out.print("Identificador do médico: ");
-                Scanner scannerSelecionarMedicoPaciente = new Scanner(System.in);
-                int medicoSelecionado = scannerSelecionarMedicoPaciente.nextInt();
-
-                Medico.selecionarMedico(medicoSelecionado);
-
-                System.out.println("Selecione um dos pacientes pelo seu identificador: ");
-                Paciente.getListaDePacientes();
-
-                System.out.print("Identificador do paciente: ");
-                int pacienteSelecionado = scannerSelecionarMedicoPaciente.nextInt();
-
-                Paciente.selecionarPaciente(pacienteSelecionado);
-
+                atendimentoMedico();
                 break;
 
             case 5:
-                System.out.println("\n================================================\nATUALIZAÇÃO DO STATUS DE ATENDIMENTO DO PACIENTE\n================================================");
-
-                System.out.println("Selecione um dos pacientes pelo seu identificador: ");
-                Paciente.getListaDePacientes();
-
-                System.out.print("Identificador do paciente: ");
-                Scanner scannerIndicePaciente = new Scanner(System.in);
-                int indicePaciente = scannerIndicePaciente.nextInt();
-
-                System.out.println("\nSelecione o status de atendimento:\n\n" +
-                        "1. Aguardando atendimento\n" +
-                        "2. Em atendimento\n" +
-                        "3. Atendido\n" +
-                        "4. Não atendido\n");
-                System.out.print("Status de atendimento: ");
-                int statusPaciente = scannerIndicePaciente.nextInt();
-
-                Paciente.atualizarStatusPaciente(indicePaciente, statusPaciente);
+                alterarStatusPaciente();
                 break;
 
             case 6:
@@ -194,10 +63,253 @@ public class Main {
         }
     }
 
+    public static void cadastroDePaciente() {
+        System.out.println("\n====================\nCadastro de Paciente\n====================\n");
+
+        System.out.println("Itens marcados com * são de preenchimento obrigatório!\n");
+
+        Paciente paciente = new Paciente();
+
+        Scanner scannerPaciente = new Scanner(System.in);
+
+        do {
+            System.out.print("*Insira o nome completo do(a) paciente: ");
+            paciente.setNomeCompleto(scannerPaciente.nextLine());
+        } while (paciente.getNomeCompleto().isEmpty());
+
+        do {
+            System.out.print("*Insira o gênero do(a) paciente: ");
+            paciente.setGenero(validaGenero(scannerPaciente.nextLine()));
+        } while (paciente.getGenero() == null);
+
+        do {
+            System.out.print("*Insira a data de nascimento do(a) paciente (dia/mês/ano): ");
+            paciente.setDataDeNascimento(validaData(scannerPaciente.nextLine().replace("-", "/")));
+        } while (paciente.getDataDeNascimento() == null);
+
+        do {
+            System.out.print("*Insira o CPF do(a) paciente: ");
+            paciente.setCpf(scannerPaciente.nextLine());
+        } while (paciente.getCpf().isEmpty());
+
+        do {
+            System.out.print("*Insira o telefone do(a) paciente: ");
+            paciente.setTelefone(scannerPaciente.nextLine());
+        } while (paciente.getTelefone().isEmpty());
+
+        do {
+            System.out.print("*Insira o contato de emergência do(a) paciente: ");
+            paciente.setContatoDeEmergencia(scannerPaciente.nextLine());
+        } while (paciente.getContatoDeEmergencia().isEmpty());
+
+        System.out.print("Insira o convênio do(a) paciente: ");
+        paciente.setConvenio(scannerPaciente.nextLine());
+
+        if (!paciente.getConvenio().isEmpty()) {
+            do {
+                System.out.print("*Insira o número do convênio do(a) paciente: ");
+                paciente.setNumeroDoConvenio(scannerPaciente.nextLine());
+            } while (paciente.getNumeroDoConvenio().isEmpty());
+
+            do {
+                System.out.print("*Insira a data de validade do convênio do(a) paciente (dia/mês/ano): ");
+                paciente.setValidadeDoConvenio(validaData(scannerPaciente.nextLine().replace("-", "/")));
+            } while (paciente.getValidadeDoConvenio() == null);
+        }
+
+        System.out.print("Insira alergias do(a) paciente: ");
+        paciente.setListaDeAlergias(scannerPaciente.nextLine());
+
+        System.out.print("Insira cuidados específicos do(a) paciente: ");
+        paciente.setListaDeCuidadosEspecificos(scannerPaciente.nextLine());
+
+        Paciente.adicionarPaciente(paciente);
+
+        System.out.println("\nPaciente cadastrado(a) com sucesso!");
+
+        reiniciaExecucao();
+    }
+
+    public static void cadastroDeEnfermeiro() {
+        System.out.println("\n======================\nCadastro de Enfermeiro\n======================\n");
+
+        System.out.println("Itens marcados com * são de preenchimento obrigatório!\n");
+
+        Enfermeiro enfermeiro = new Enfermeiro();
+
+        Scanner scannerEnfermeiro = new Scanner(System.in);
+
+        do {
+            System.out.print("*Insira o nome completo do(a) enfermeiro(a): ");
+            enfermeiro.setNomeCompleto(scannerEnfermeiro.nextLine());
+        } while (enfermeiro.getNomeCompleto().isEmpty());
+
+        do {
+            System.out.print("*Insira o gênero do(a) enfermeiro(a): ");
+            enfermeiro.setGenero(validaGenero(scannerEnfermeiro.nextLine()));
+        } while (enfermeiro.getGenero() == null);
+
+        do {
+            System.out.print("*Insira a data de nascimento do(a) enfermeiro(a) (dia/mês/ano): ");
+            enfermeiro.setDataDeNascimento(validaData(scannerEnfermeiro.nextLine().replace("-", "/")));
+        } while (enfermeiro.getDataDeNascimento() == null);
+
+        do {
+            System.out.print("*Insira o CPF do(a) enfermeiro(a): ");
+            enfermeiro.setCpf(scannerEnfermeiro.nextLine());
+        } while (enfermeiro.getCpf().isEmpty());
+
+        do {
+            System.out.print("*Insira o telefone do(a) enfermeiro(a): ");
+            enfermeiro.setTelefone(scannerEnfermeiro.nextLine());
+        } while (enfermeiro.getTelefone().isEmpty());
+
+        do {
+            System.out.print("*Insira a instituição de formação do(a) enfermeiro(a): ");
+            enfermeiro.setInstituicaoDeEnsinoDaFormacao(scannerEnfermeiro.nextLine());
+        } while (enfermeiro.getInstituicaoDeEnsinoDaFormacao().isEmpty());
+
+        do {
+            System.out.print("*Insira o COREN/UF do(a) enfermeiro(a): ");
+            enfermeiro.setCoren(scannerEnfermeiro.nextLine());
+        } while (enfermeiro.getCoren().isEmpty());
+
+        Enfermeiro.adicionarEnfermeiro(enfermeiro);
+
+        System.out.println("\nEnfermeiro(a) cadastrado(a) com sucesso!");
+
+        reiniciaExecucao();
+
+    }
+
+    public static void cadastroDeMedico() {
+        System.out.println("\n==================\nCadastro de Médico\n==================\n");
+
+        System.out.println("Itens marcados com * são de preenchimento obrigatório!\n");
+
+        Medico medico = new Medico();
+
+        Scanner scannerMedico = new Scanner(System.in);
+
+        do {
+            System.out.print("*Insira o nome completo do(a) médico(a): ");
+            medico.setNomeCompleto(scannerMedico.nextLine());
+        } while (medico.getNomeCompleto().isEmpty());
+
+        do {
+            System.out.print("*Insira o gênero do(a) médico(a): ");
+            medico.setGenero(validaGenero(scannerMedico.nextLine()));
+        } while (medico.getGenero() == null);
+
+        do {
+            System.out.print("*Insira a data de nascimento do(a) médico(a) (dia/mês/ano): ");
+            medico.setDataDeNascimento(validaData(scannerMedico.nextLine().replace("-", "/")));
+        } while (medico.getDataDeNascimento() == null);
+
+        do {
+            System.out.print("*Insira o CPF do(a) médico(a): ");
+            medico.setCpf(scannerMedico.nextLine());
+        } while (medico.getCpf().isEmpty());
+
+        do {
+            System.out.print("*Insira o telefone do(a) médico(a): ");
+            medico.setTelefone(scannerMedico.nextLine());
+        } while (medico.getTelefone().isEmpty());
+
+        do {
+            System.out.print("*Insira a instituição de formação do(a) médico(a): ");
+            medico.setInstituicaoDeEnsinoDaFormacao(scannerMedico.nextLine());
+        } while (medico.getInstituicaoDeEnsinoDaFormacao().isEmpty());
+
+        do {
+            System.out.print("*Insira o CRM/UF do(a) médico(a): ");
+            medico.setCrm(scannerMedico.nextLine());
+        } while (medico.getCrm().isEmpty());
+
+
+        System.out.println("\n*Insira a especialidade do(a) médico(a): ");
+        System.out.println("\n1.Clínico Geral\n2.Anestesiologia\n3.Dermatologia\n4.Ginecologia\n5.Neurologia\n6.Pediatria\n7.Psiquiatria\n8.Ortopedia");
+
+        do {
+            System.out.print("\nEspecialidade: ");
+            medico.setEspecialidade(scannerMedico.nextLine());
+        } while (medico.getEspecialidade() == null);
+
+        medico.setStatusNoSistema(true);
+
+        Medico.adicionarMedico(medico);
+
+        System.out.println("\nMédico(a) cadastrado(a) com sucesso!");
+
+        reiniciaExecucao();
+
+    }
+
+    public static void atendimentoMedico() {
+        System.out.println("\n================================\nRealização de atendimento médico\n================================");
+
+        System.out.println("\nSelecione um(a) médico(a) pelo seu identificador: ");
+        Medico.getListaDeMedicos();
+
+        System.out.print("\nIdentificador do(a) médico(a): ");
+        Scanner scannerSelecionarMedicoPaciente = new Scanner(System.in);
+        int medicoSelecionado = scannerSelecionarMedicoPaciente.nextInt();
+
+        Medico.selecionarMedico(medicoSelecionado);
+
+        System.out.println("\nSelecione um(a) paciente pelo seu identificador: ");
+        Paciente.getListaDePacientes();
+
+        System.out.print("\nIdentificador do(a) paciente: ");
+        int pacienteSelecionado = scannerSelecionarMedicoPaciente.nextInt();
+
+        Paciente.selecionarPaciente(pacienteSelecionado);
+
+        System.out.println("\nAtendimento realizado com sucesso!");
+
+        reiniciaExecucao();
+
+    }
+
+    public static void alterarStatusPaciente() {
+        System.out.println("\n================================================\nAtualização do status de atendimento do paciente\n================================================");
+
+        System.out.println("\nSelecione um(a) paciente pelo seu identificador: ");
+        Paciente.getListaDePacientes();
+
+        System.out.print("\nIdentificador do(a) paciente: ");
+        Scanner scannerIndicePaciente = new Scanner(System.in);
+        int indicePaciente = scannerIndicePaciente.nextInt();
+        int statusPaciente = 0;
+
+        System.out.println("\nSelecione o status de atendimento:\n\n" +
+                "1. Aguardando atendimento\n" +
+                "2. Em atendimento\n" +
+                "3. Atendido\n" +
+                "4. Não atendido\n");
+
+        do {
+            try {
+                System.out.print("Status de atendimento: ");
+                statusPaciente = scannerIndicePaciente.nextInt();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Opção incorreta, tente novamente!");
+            }
+        } while (statusPaciente < 1 || statusPaciente > 4);
+
+        Paciente.atualizarStatusPaciente(indicePaciente, statusPaciente);
+
+        System.out.println("\nStatus do(a) paciente alterado com sucesso!");
+
+        reiniciaExecucao();
+
+    }
+
     public static void relatorios() {
         int opcao = 0;
 
-        System.out.println("\n==========\nRELATÓRIOS\n==========");
+        System.out.println("\n==========\nRelatórios\n==========");
 
         System.out.println("\nSelecione uma das opções abaixo:\n\n" +
                 "1. Relatório de pacientes\n" +
@@ -218,6 +330,7 @@ public class Main {
 
         switch (opcao) {
             case 1:
+                int status = 0;
                 System.out.println("\nSelecione o status de atendimento:\n\n" +
                         "1. Aguardando atendimento\n" +
                         "2. Em atendimento\n" +
@@ -227,18 +340,29 @@ public class Main {
                         "6. Voltar uma tela\n" +
                         "7. Voltar a tela inicial\n");
 
-                Scanner scannerStatusPaciente = new Scanner(System.in);
-                System.out.print("Status de atendimento: ");
-                int status = scannerStatusPaciente.nextInt();
+                do {
+                    try {
+                        Scanner scannerStatusPaciente = new Scanner(System.in);
+                        System.out.print("Status de atendimento: ");
+                        status = scannerStatusPaciente.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("Opção incorreta, tente novamente!\n");
+                    }
+                } while (status < 1 || status > 7);
 
                 Pessoa.relatorioPacientes(status);
+
+                reiniciaExecucao();
+
                 break;
 
             case 2:
                 Enfermeiro.getListaDeEnfermeiros();
+                reiniciaExecucao();
                 break;
 
             case 3:
+                int especialidade = 0;
                 System.out.println("\nSelecione uma especialidade:\n\n" +
                         "1. Clínico geral\n" +
                         "2. Anestesiologia\n" +
@@ -252,26 +376,63 @@ public class Main {
                         "10. Voltar uma tela\n" +
                         "11. Voltar a tela inicial\n");
 
-                Scanner scannerEspecialidadeMedico = new Scanner(System.in);
-                System.out.print("Especialidade: ");
-                int especialidade = scannerEspecialidadeMedico.nextInt();
+                do {
+                    try {
+                        Scanner scannerEspecialidadeMedico = new Scanner(System.in);
+                        System.out.print("Especialidade: ");
+                        especialidade = scannerEspecialidadeMedico.nextInt();
+
+                    } catch (InputMismatchException e) {
+                        System.out.println("Opção incorreta, tente novamente!\n");
+                    }
+                } while (especialidade < 1 || especialidade > 11);
 
                 Pessoa.relatorioMedico(especialidade);
+
+                reiniciaExecucao();
+
                 break;
 
             case 4:
-                Pessoa.getListaDePacientes();
-                Pessoa.getListaDeEnfermeiros();
-                Pessoa.getListaDeMedicos();
-
-                System.out.println();
-
+                Pessoa.relatorioGeral();
+                reiniciaExecucao();
                 break;
 
             case 5:
                 telaInicial();
                 break;
         }
+    }
+
+    public static String validaGenero(String inputGenero) {
+        if (inputGenero.equalsIgnoreCase("masculino") || inputGenero.equalsIgnoreCase("feminino") || inputGenero.equalsIgnoreCase("outro")) {
+            return inputGenero;
+        } else {
+            return null;
+        }
+    }
+
+    public static String validaData(String inputData) {
+        Date data = null;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            format.setLenient(false);
+            data = format.parse(inputData);
+            return inputData;
+        } catch (ParseException e) {
+            System.out.println("Data inválida, tente novamente!\n");
+        }
+        return null;
+    }
+
+    public static void reiniciaExecucao() {
+        System.out.print("\nPressione qualquer tecla para continuar... ");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+
+        System.out.println("\n");
+        telaInicial();
     }
 
     public static void main(String[] args) {

@@ -11,6 +11,27 @@ public class Paciente extends Pessoa {
     private String statusDeAtendimento = "Aguardando atendimento";
     private Integer totalDeAtendimentosRealizados = 0;
 
+    // Getters
+    public String getStatusDeAtendimento() {
+        return statusDeAtendimento;
+    }
+
+    public String getContatoDeEmergencia() {
+        return contatoDeEmergencia;
+    }
+
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public String getNumeroDoConvenio() {
+        return numeroDoConvenio;
+    }
+
+    public String getValidadeDoConvenio() {
+        return validadeDoConvenio;
+    }
+
     // Setters
     public void setContatoDeEmergencia(String contatoDeEmergencia) {
         this.contatoDeEmergencia = contatoDeEmergencia;
@@ -44,17 +65,16 @@ public class Paciente extends Pessoa {
         this.statusDeAtendimento = statusDeAtendimento;
     }
 
-    // Getter
-    public String getStatusDeAtendimento() {
-        return statusDeAtendimento;
-    }
-
     // toString
     @Override
     public String toString() {
         return "Paciente {" +
                 "Nome completo = '" + getNomeCompleto() + '\'' +
+                ", Gênero = '" + getGenero() + '\'' +
+                ", CPF = '" + getCpf() + '\'' +
+                ", Data de nascimento = '" + getDataDeNascimento() + '\'' +
                 ", Convênio = '" + convenio + '\'' +
+                ", Status de atendimento = '" + statusDeAtendimento + '\'' +
                 ", Total de atendimentos = " + totalDeAtendimentosRealizados +
                 '}';
     }
