@@ -267,7 +267,7 @@ public abstract class Pessoa {
         if (listaDePacientes.size() == 0) {
             System.out.println("\nNão há pacientes cadastrados(as)!");
         } else {
-            System.out.println();
+            System.out.println("\n\nPacientes\n=========");
             for (int i = 0; i < listaDePacientes.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDePacientes.get(i));
             }
@@ -276,16 +276,16 @@ public abstract class Pessoa {
         if (listaDeEnfermeiros.size() == 0) {
             System.out.println("\nNão há enfermeiros(as) cadastrados(as)!");
         } else {
-            System.out.println();
+            System.out.println("\n\nEnfermeiros(as)\n===============");
             for (int i = 0; i < listaDeEnfermeiros.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDeEnfermeiros.get(i));
             }
         }
 
         if (listaDeMedicos.size() == 0) {
-            System.out.println("Não há médicos(as) cadastrados(as)!");
+            System.out.println("\nNão há médicos(as) cadastrados(as)!");
         } else {
-            System.out.println();
+            System.out.println("\n\nMédicos(as)\n===========");
             for (int i = 0; i < listaDeMedicos.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDeMedicos.get(i));
             }
@@ -303,7 +303,7 @@ public abstract class Pessoa {
 
     public static void selecionarPaciente(int id) {
         listaDePacientes.get(id).setTotalDeAtendimentosRealizados();
-        listaDePacientes.get(id).setStatusDeAtendimento("Atendido");
+        listaDePacientes.get(id).setStatusDeAtendimento("Em atendimento");
     }
 
     public static void atualizarStatusPaciente(int id, int status) {
