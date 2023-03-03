@@ -1,4 +1,15 @@
-// Correção da IndexOutOfBoundsException na tela de atendimento médico e na tela de alterar status do paciente
+/*
+
+Necessário:
+- Tatamento da IndexOutOfBoundsException na tela de alterar status do paciente e médico
+- Ao realizar uma consulta, fazer com que o índice do médico seja atrelado ao paciente
+- Correção do README.md
+
+Opcional:
+- Colocar títulos nos relatórios, separando por paciente, enfermeiro e médico
+- Implementar funcionalidades adicionais (remover paciente, enfermeiro e médico)
+
+ */
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,8 +31,9 @@ public class Main {
                         "3. Cadastro de Médico\n" +
                         "4. Realização de Atendimento Médico\n" +
                         "5. Atualização do Status de Atendimento do Paciente\n" +
-                        "6. Relatórios\n" +
-                        "7. Sair\n");
+                        "6. Atualização do Status do Médico no Sistema\n" +
+                        "7. Relatórios\n" +
+                        "8. Sair\n");
 
         do {
             try {
@@ -31,7 +43,7 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.out.println("Opção incorreta, tente novamente!\n");
             }
-        } while (opcao < 1 || opcao > 7);
+        } while (opcao < 1 || opcao > 8);
 
         switch (opcao) {
             case 1:
@@ -55,10 +67,14 @@ public class Main {
                 break;
 
             case 6:
-                relatorios();
+                alterarStatusMedico();
                 break;
 
             case 7:
+                relatorios();
+                break;
+
+            case 8:
                 System.exit(0);
         }
     }
@@ -78,7 +94,7 @@ public class Main {
         } while (paciente.getNomeCompleto().isEmpty());
 
         do {
-            System.out.print("*Insira o gênero do(a) paciente: ");
+            System.out.print("*Insira o gênero do(a) paciente (masculino/feminino/outro): ");
             paciente.setGenero(validaGenero(scannerPaciente.nextLine()));
         } while (paciente.getGenero() == null);
 
@@ -145,7 +161,7 @@ public class Main {
         } while (enfermeiro.getNomeCompleto().isEmpty());
 
         do {
-            System.out.print("*Insira o gênero do(a) enfermeiro(a): ");
+            System.out.print("*Insira o gênero do(a) enfermeiro(a) (masculino/feminino/outro): ");
             enfermeiro.setGenero(validaGenero(scannerEnfermeiro.nextLine()));
         } while (enfermeiro.getGenero() == null);
 
@@ -197,7 +213,7 @@ public class Main {
         } while (medico.getNomeCompleto().isEmpty());
 
         do {
-            System.out.print("*Insira o gênero do(a) médico(a): ");
+            System.out.print("*Insira o gênero do(a) médico(a) (masculino/feminino/outro): ");
             medico.setGenero(validaGenero(scannerMedico.nextLine()));
         } while (medico.getGenero() == null);
 
@@ -246,29 +262,52 @@ public class Main {
     }
 
     public static void atendimentoMedico() {
+        boolean passMedico = false;
+        boolean passPaciente = false;
+
         System.out.println("\n================================\nRealização de atendimento médico\n================================");
 
-        System.out.println("\nSelecione um(a) médico(a) pelo seu identificador: ");
-        Medico.getListaDeMedicos();
+        do {
+            try {
+                System.out.println("\nSelecione um(a) médico(a) pelo seu identificador: ");
+                Medico.getListaDeMedicos();
 
-        System.out.print("\nIdentificador do(a) médico(a): ");
-        Scanner scannerSelecionarMedicoPaciente = new Scanner(System.in);
-        int medicoSelecionado = scannerSelecionarMedicoPaciente.nextInt();
+                System.out.print("\nIdentificador do(a) médico(a): ");
+                Scanner scannerSelecionarMedico = new Scanner(System.in);
+                int medicoSelecionado = scannerSelecionarMedico.nextInt();
 
-        Medico.selecionarMedico(medicoSelecionado);
+                Medico.selecionarMedico(medicoSelecionado);
 
-        System.out.println("\nSelecione um(a) paciente pelo seu identificador: ");
-        Paciente.getListaDePacientes();
+                passMedico = true;
 
-        System.out.print("\nIdentificador do(a) paciente: ");
-        int pacienteSelecionado = scannerSelecionarMedicoPaciente.nextInt();
+            } catch (IndexOutOfBoundsException | InputMismatchException e) {
+                System.out.println("Índice incorreto, tente novamente!");
+            }
+        } while (!passMedico);
 
-        Paciente.selecionarPaciente(pacienteSelecionado);
+        do {
+            try {
+
+                System.out.println("\nSelecione um(a) paciente pelo seu identificador: ");
+                Paciente.getListaDePacientes();
+
+                System.out.print("\nIdentificador do(a) paciente: ");
+                Scanner scannerSelecionarPaciente = new Scanner(System.in);
+                int pacienteSelecionado = scannerSelecionarPaciente.nextInt();
+
+                Paciente.selecionarPaciente(pacienteSelecionado);
+
+                passPaciente = true;
+
+            } catch (IndexOutOfBoundsException | InputMismatchException e) {
+                System.out.println("Índice incorreto, tente novamente!");
+            }
+
+        } while (!passPaciente);
 
         System.out.println("\nAtendimento realizado com sucesso!");
 
         reiniciaExecucao();
-
     }
 
     public static void alterarStatusPaciente() {
@@ -301,6 +340,39 @@ public class Main {
         Paciente.atualizarStatusPaciente(indicePaciente, statusPaciente);
 
         System.out.println("\nStatus do(a) paciente alterado com sucesso!");
+
+        reiniciaExecucao();
+
+    }
+
+    public static void alterarStatusMedico() {
+        System.out.println("\n================================================\nAtualização do status do médico no sistema\n================================================");
+
+        System.out.println("\nSelecione um(a) médico(a) pelo seu identificador: ");
+        Medico.getListaDeMedicos();
+
+        System.out.print("\nIdentificador do(a) médico(a): ");
+        Scanner scannerIndiceMedico = new Scanner(System.in);
+        int indiceMedico = scannerIndiceMedico.nextInt();
+        int statusMedico = 0;
+
+        System.out.println("\nSelecione o status do médico:\n\n" +
+                "1. Ativo\n" +
+                "2. Inativo\n");
+
+        do {
+            try {
+                System.out.print("Status no sistema: ");
+                statusMedico = scannerIndiceMedico.nextInt();
+
+            } catch (InputMismatchException e) {
+                System.out.println("Opção incorreta, tente novamente!");
+            }
+        } while (statusMedico < 1 || statusMedico > 2);
+
+        Medico.atualizarStatusMedico(indiceMedico, statusMedico);
+
+        System.out.println("\nStatus do(a) médico alterado com sucesso!");
 
         reiniciaExecucao();
 

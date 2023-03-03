@@ -1,7 +1,7 @@
 # LABMedicine
 - Produto Viável Mínimo (MVP) de uma aplicação Back-End, construída utilizando a linguagem de programação JAVA utilizada para testar e automatizar determinados processos nos atendimentos de pacientes em âmbito hospitalar.
 
-<h2>Funcionalidades</h2>
+## Funcionalidades
 - Cadastro de pacientes
 - Cadastro de enfermeiros
 - Cadastro de médicos
@@ -13,7 +13,7 @@
 - Relatório geral
 - Mensagens de empty state
 
-<h2>Melhorias</h2>
+## Melhorias
 - Criação de interface web
 - Comunicação com banco de dados
 - Persistência dos dados
@@ -22,9 +22,9 @@
 - Métodos para editar e excluir pacientes, enfermeiros e médicos
 - Utilização de enums
 - Utilização de builders
-- Diminuir a repetição de código
+- Aumentar o reaproveitamento de código
 
-<h2>Adicionais</h2>
+## Adicionais
 
 
 

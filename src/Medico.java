@@ -18,6 +18,10 @@ public class Medico extends Pessoa {
         return crm;
     }
 
+    public Boolean getStatusNoSistema() {
+        return statusNoSistema;
+    }
+
     // Setters
     public void setInstituicaoDeEnsinoDaFormacao(String instituicaoDeEnsinoDaFormacao) {
         this.instituicaoDeEnsinoDaFormacao = instituicaoDeEnsinoDaFormacao;
@@ -59,6 +63,8 @@ public class Medico extends Pessoa {
                 ", Especialidade = '" + especialidade + '\'' +
                 ", CRM/UF = '" + crm + '\'' +
                 ", Instituição acadêmica = '" + instituicaoDeEnsinoDaFormacao + '\'' +
+                ", Status = " + statusNoSistema +
+                ", Total de atendimentos = " + totalDeAtendimentosRealizados +
                 '}';
     }
 }

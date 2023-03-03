@@ -34,7 +34,7 @@ public abstract class Pessoa {
 
     public static void getListaDePacientes() {
         if (listaDePacientes.size() == 0) {
-            System.out.print("\nNão há pacientes cadastrados!\n");
+            System.out.println("\nNão há pacientes cadastrados(as)!\n");
             Main.reiniciaExecucao();
         } else {
             for (int i = 0; i < listaDePacientes.size(); i++) {
@@ -45,7 +45,7 @@ public abstract class Pessoa {
 
     public static void getListaDeEnfermeiros() {
         if (listaDeEnfermeiros.size() == 0) {
-            System.out.println("\nNão há enfermeiros cadastrados!");
+            System.out.println("\nNão há enfermeiros(as) cadastrados(as)!\n");
             Main.reiniciaExecucao();
         } else {
             for (int i = 0; i < listaDeEnfermeiros.size(); i++) {
@@ -56,7 +56,7 @@ public abstract class Pessoa {
 
     public static void getListaDeMedicos() {
         if (listaDeMedicos.size() == 0) {
-            System.out.print("\nNão há médicos cadastrados!\n");
+            System.out.println("\nNão há médicos(as) cadastrados(as)!\n");
             Main.reiniciaExecucao();
         } else {
             for (int i = 0; i < listaDeMedicos.size(); i++) {
@@ -109,7 +109,7 @@ public abstract class Pessoa {
         }
 
         if (listaDePacientes.size() == 0) {
-            System.out.println("\nNão há pacientes cadastrados!");
+            System.out.println("\nNão há pacientes cadastrados(as)!");
             Main.reiniciaExecucao();
         }
 
@@ -118,7 +118,7 @@ public abstract class Pessoa {
                 if (paciente.getStatusDeAtendimento().contains("Aguardando atendimento")) {
                     System.out.println(paciente);
                 } else {
-                    System.out.println("\nNão há pacientes cadastrados!");
+                    System.out.println("\nNão há pacientes cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -128,7 +128,7 @@ public abstract class Pessoa {
                 if (paciente.getStatusDeAtendimento().contains("Em atendimento")) {
                     System.out.println(paciente);
                 } else {
-                    System.out.println("\nNão há pacientes cadastrados!");
+                    System.out.println("\nNão há pacientes cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -138,7 +138,7 @@ public abstract class Pessoa {
                 if (paciente.getStatusDeAtendimento().contains("Atendido")) {
                     System.out.println(paciente);
                 } else {
-                    System.out.println("\nNão há pacientes cadastrados!");
+                    System.out.println("\nNão há pacientes cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -148,7 +148,7 @@ public abstract class Pessoa {
                 if (paciente.getStatusDeAtendimento().contains("Não atendido")) {
                     System.out.println(paciente);
                 } else {
-                    System.out.println("\nNão há pacientes cadastrados!");
+                    System.out.println("\nNão há pacientes cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -171,7 +171,7 @@ public abstract class Pessoa {
         }
 
         if (listaDeMedicos.size() == 0) {
-            System.out.println("\nNão há medicos cadastrados!");
+            System.out.println("\nNão há medicos(as) cadastrados(as)!");
             Main.reiniciaExecucao();
         }
 
@@ -180,7 +180,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Clínico geral")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -190,7 +190,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Anestesiologia")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -200,7 +200,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Dermatologia")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -210,7 +210,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Ginecologia")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -220,7 +220,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Neurologia")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -230,7 +230,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Pediatria")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -240,7 +240,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Psiquiatria")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -250,7 +250,7 @@ public abstract class Pessoa {
                 if (medico.getEspecialidade().contains("Ortopedia")) {
                     System.out.println(medico);
                 } else {
-                    System.out.println("\nNão há medicos cadastrados!");
+                    System.out.println("\nNão há medicos(as) cadastrados(as)!");
                     Main.reiniciaExecucao();
                 }
             }
@@ -265,24 +265,27 @@ public abstract class Pessoa {
 
     public static void relatorioGeral() {
         if (listaDePacientes.size() == 0) {
-            System.out.print("\nNão há pacientes cadastrados(as)!\n");
+            System.out.println("\nNão há pacientes cadastrados(as)!");
         } else {
+            System.out.println();
             for (int i = 0; i < listaDePacientes.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDePacientes.get(i));
             }
         }
 
         if (listaDeEnfermeiros.size() == 0) {
-            System.out.print("\nNão há enfermeiros(as) cadastrados(as)!\n");
+            System.out.println("\nNão há enfermeiros(as) cadastrados(as)!");
         } else {
+            System.out.println();
             for (int i = 0; i < listaDeEnfermeiros.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDeEnfermeiros.get(i));
             }
         }
 
         if (listaDeMedicos.size() == 0) {
-            System.out.print("\nNão há médicos(as) cadastrados(as)!\n");
+            System.out.println("Não há médicos(as) cadastrados(as)!");
         } else {
+            System.out.println();
             for (int i = 0; i < listaDeMedicos.size(); i++) {
                 System.out.println("Identificador: " + i + " " + listaDeMedicos.get(i));
             }
@@ -290,7 +293,12 @@ public abstract class Pessoa {
     }
 
     public static void selecionarMedico(int id) {
-        listaDeMedicos.get(id).setTotalDeAtendimentosRealizados();
+        if (listaDeMedicos.get(id).getStatusNoSistema()) {
+            listaDeMedicos.get(id).setTotalDeAtendimentosRealizados();
+        } else {
+            System.out.println("Médico(a) inativo(a), tente novamente!");
+            Main.reiniciaExecucao();
+        }
     }
 
     public static void selecionarPaciente(int id) {
@@ -307,6 +315,14 @@ public abstract class Pessoa {
             listaDePacientes.get(id).setStatusDeAtendimento("Atendido");
         } else if (status == 4) {
             listaDePacientes.get(id).setStatusDeAtendimento("Não atendido");
+        }
+    }
+
+    public static void atualizarStatusMedico(int id, int status) {
+        if (status == 1) {
+            listaDeMedicos.get(id).setStatusNoSistema(true);
+        } else if (status == 2) {
+            listaDeMedicos.get(id).setStatusNoSistema(false);
         }
     }
 }
