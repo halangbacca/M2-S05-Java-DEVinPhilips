@@ -1,13 +1,3 @@
-/*
-
-Necessário:
-- Ao realizar uma consulta, fazer com que o índice do médico seja atrelado ao paciente
-
-Opcional:
-- Implementar funcionalidades adicionais (remover paciente, enfermeiro e médico)
-
- */
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

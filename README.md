@@ -28,7 +28,8 @@
 - Utilização de builders
 - Aumentar o reaproveitamento de código
 
-## Adicionais
+## Gravação
+- https://drive.google.com/file/d/1fvcfddUWRW6RzYeQ36MLi81wKaGTwh42/view?usp=share_link
 
 
 
